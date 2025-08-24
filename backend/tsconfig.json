@@ -5,6 +5,7 @@
     "strict": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,
+    "moduleResolution": "Bundler",
     "types": [
       "node"
     ],

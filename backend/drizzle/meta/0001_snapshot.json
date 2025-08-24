@@ -1,0 +1,141 @@
+{
+  "id": "ab1559a0-e9ba-431e-88c8-8515c7274424",
+  "prevId": "8b6b14a4-340c-4865-a4b6-c98880ce3726",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.villagers": {
+      "name": "villagers",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "villagers_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "nik": {
+          "name": "nik",
+          "type": "varchar(16)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "alamat": {
+          "name": "alamat",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "rt": {
+          "name": "rt",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "rw": {
+          "name": "rw",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "desa_id": {
+          "name": "desa_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "jk": {
+          "name": "jk",
+          "type": "jk",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tanggal_lahir": {
+          "name": "tanggal_lahir",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "agama_id": {
+          "name": "agama_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tempat_lahir": {
+          "name": "tempat_lahir",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "upadted_at": {
+          "name": "upadted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "villagers_nik_unique": {
+          "name": "villagers_nik_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "nik"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.jk": {
+      "name": "jk",
+      "schema": "public",
+      "values": [
+        "l",
+        "P"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
