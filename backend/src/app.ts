@@ -1,8 +1,8 @@
-import { Hono } from "hono"
-import villagersRoutes from "./modules/villagers/villagers.routes"
+import { Hono } from "hono";
+import pendudukRoutes from "./modules/penduduk/penduduk.routes";
 
-const app = new Hono()
+const app = new Hono();
 
-app.route("/api/villagers", villagersRoutes)
+app.route("/api/penduduk", pendudukRoutes);
 
-export default app
+export default app;
