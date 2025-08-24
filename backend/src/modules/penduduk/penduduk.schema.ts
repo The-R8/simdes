@@ -1,3 +1,4 @@
+import { relations } from "drizzle-orm";
 import {
   pgTable,
   integer,
@@ -42,6 +43,16 @@ export const pendidikanEnum = pgEnum("pendidikan", [
 
 export const kewarganegaraanEnum = pgEnum("kewarganegaraan", ["WNI", "WNA"]);
 
+export const agama = pgTable("agama", {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  nama: varchar({ length: 100 }).notNull(),
+});
+
+export const role = pgTable("role", {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  name: varchar({ length: 100 }).notNull(),
+});
+
 export const penduduk = pgTable("penduduk", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   parent_id: integer().references((): AnyPgColumn => penduduk.id),
@@ -55,7 +66,7 @@ export const penduduk = pgTable("penduduk", {
 
   pekerjaan: varchar({ length: 100 }).notNull(),
   agama_id: integer().notNull(),
-  // role_id: integer().references((): AnyPgColumn => role.id),
+  role_id: integer().references((): AnyPgColumn => role.id),
 
   status_kawin: statusKawinEnum().notNull(),
   pendidikan: pendidikanEnum().notNull(),
@@ -67,6 +78,17 @@ export const penduduk = pgTable("penduduk", {
     .$onUpdate(() => new Date())
     .notNull(),
 });
+
+export const pendudukRelations = relations(penduduk, ({ one }) => ({
+  agama: one(agama, {
+    fields: [penduduk.agama_id],
+    references: [agama.id],
+  }),
+  role: one(role, {
+    fields: [penduduk.role_id],
+    references: [role.id],
+  }),
+}));
 
 // zod scheme
 export const insertPendudukSchema = createInsertSchema(penduduk);
