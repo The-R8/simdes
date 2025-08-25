@@ -91,9 +91,21 @@ export const pendudukRelations = relations(penduduk, ({ one }) => ({
 }));
 
 // zod scheme
+
+// PENDUDUK
 export const insertPendudukSchema = createInsertSchema(penduduk);
 export const updatePendudukSchema = createUpdateSchema(penduduk);
 export const selectPendudukSchema = createSelectSchema(penduduk);
+
+// AGAMA
+export const insertAgamaSchema = createInsertSchema(agama);
+export const updateAgamaSchema = createUpdateSchema(agama);
+export const selectAgamaSchema = createSelectSchema(agama);
+
+// ROLE
+export const insertRoleSchema = createInsertSchema(role);
+export const updateRoleSchema = createUpdateSchema(role);
+export const selectRoleSchema = createSelectSchema(role);
 
 // type helper
 export type InsertPenduduk = typeof penduduk.$inferInsert;

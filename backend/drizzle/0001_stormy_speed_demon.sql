@@ -1,1 +1,0 @@
-CREATE TYPE "public"."jk" AS ENUM('l', 'P');
