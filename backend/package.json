@@ -4,12 +4,14 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "drizzle:seed": "npx tsx ./src/config/db.ts"
   },
   "dependencies": {
     "@hono/node-server": "^1.19.0",
     "dotenv": "^17.2.1",
     "drizzle-orm": "^0.44.4",
+    "drizzle-seed": "^0.3.1",
     "drizzle-zod": "^0.8.3",
     "hono": "^4.9.4",
     "pg": "^8.16.3"

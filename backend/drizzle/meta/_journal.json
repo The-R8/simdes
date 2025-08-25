@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1756044771044,
-      "tag": "0000_kind_apocalypse",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1756045325257,
-      "tag": "0001_stormy_speed_demon",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1756045373903,
-      "tag": "0002_chunky_big_bertha",
+      "when": 1756101477840,
+      "tag": "0000_flimsy_puma",
       "breakpoints": true
     }
   ]
