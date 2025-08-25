@@ -34,3 +34,26 @@ A. Penduduk
   - Wails (JS, GO) -> Hidden Treasure
   - Quasar (VueJS) -> Template (Chosen) (TS)
   - Flutter
+
+## Devlog
+
+### Week 1
+
+1. Menyiapkan ERD:
+  - [x] Penduduk
+  - [x] Kartu Keluarga
+  - [ ] Kelahiran
+  - [ ] Kematian
+
+2. Setup Proyek dan DB
+  - [x] Quasar
+  - [x] Hono
+  - [x] postgres (docker/podman)
+
+3. Schema (Drizzle)
+  - [x] Penduduk
+  - [x] Kartu Keluarga
+  - [x] Dusun
+  - [ ] Master
+
+
