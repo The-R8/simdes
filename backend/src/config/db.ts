@@ -14,12 +14,4 @@ const pool = new Pool({
   ssl: false,
 });
 
-export const db = drizzle(pool);
-
-async function dbSeeding() {
-  await reset(db, schema);
-  await seed(db, schema, { count: 10 });
-  console.log("Database reset and seeded");
-}
-
-dbSeeding();
+export const db = drizzle(pool, { schema });
