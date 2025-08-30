@@ -7,9 +7,9 @@ export async function createPendudukHandler(c: Context) {
   const data = insertPendudukSchema.parse(body);
 
   // check if nik is exist
-  const villager = await pendudukService.getPendudukByNik(data.nik);
+  const penduduk = await pendudukService.getPendudukByNik(data.nik);
 
-  if (villager.length) {
+  if (penduduk) {
     return c.json(
       {
         success: false,
@@ -34,9 +34,9 @@ export async function createPendudukHandler(c: Context) {
 export async function getPendudukListHandler(c: Context) {
   const query = c.req.query("query");
 
-  const villagers = await pendudukService.getPendudukList(query);
+  const penduduk = await pendudukService.getPendudukList(query);
 
-  if (!villagers.length) {
+  if (penduduk) {
     return c.json(
       {
         success: false,
@@ -50,7 +50,7 @@ export async function getPendudukListHandler(c: Context) {
     {
       success: true,
       message: "Penduduk ditemukan",
-      data: villagers,
+      data: penduduk,
     },
     200,
   );
@@ -60,9 +60,9 @@ export async function getPendudukByIdHandler(c: Context) {
   const idStr = c.req.param("id");
   const id = parseInt(idStr);
 
-  const villager = await pendudukService.getPendudukById(id);
+  const penduduk = await pendudukService.getPendudukById(id);
 
-  if (!villager.length) {
+  if (penduduk) {
     return c.json(
       {
         success: false,
@@ -76,7 +76,7 @@ export async function getPendudukByIdHandler(c: Context) {
     {
       success: true,
       message: "Penduduk ditemukan",
-      data: villager,
+      data: penduduk,
     },
     200,
   );
@@ -85,9 +85,9 @@ export async function getPendudukByIdHandler(c: Context) {
 export async function getPendudukByNikHandler(c: Context) {
   const nik = c.req.param("nik");
 
-  const villager = await pendudukService.getPendudukByNik(nik);
+  const penduduk = await pendudukService.getPendudukByNik(nik);
 
-  if (!villager.length) {
+  if (penduduk) {
     return c.json(
       {
         success: false,
@@ -101,7 +101,7 @@ export async function getPendudukByNikHandler(c: Context) {
     {
       success: true,
       message: "Penduduk ditemukan",
-      data: villager,
+      data: penduduk,
     },
     200,
   );
@@ -112,9 +112,9 @@ export async function updatePendudukHandler(c: Context) {
   const data = updatePendudukSchema.parse(body);
 
   // check if nik is exist
-  const villager = await pendudukService.getPendudukByNik(data.nik!);
+  const penduduk = await pendudukService.getPendudukByNik(data.nik!);
 
-  if (villager.length) {
+  if (penduduk) {
     return c.json(
       {
         success: false,
@@ -140,9 +140,9 @@ export async function deletePendudukByNikHandler(c: Context) {
   const nik = c.req.param("nik");
 
   // check if villager is exist
-  const villager = await pendudukService.getPendudukByNik(nik);
+  const penduduk = await pendudukService.getPendudukByNik(nik);
 
-  if (!villager.length) {
+  if (penduduk) {
     return c.json(
       {
         success: true,

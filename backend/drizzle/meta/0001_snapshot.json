@@ -1,0 +1,449 @@
+{
+  "id": "e842ee30-1786-481d-8fd9-386abeebd697",
+  "prevId": "aaea4eed-ce15-4883-8045-754a1eb6535c",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.dusun": {
+      "name": "dusun",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "byDefault",
+            "name": "dusun_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "upadted_at": {
+          "name": "upadted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.kartu_keluarga": {
+      "name": "kartu_keluarga",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "byDefault",
+            "name": "kartu_keluarga_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "nomor_kk": {
+          "name": "nomor_kk",
+          "type": "varchar(16)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "rt": {
+          "name": "rt",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "rw": {
+          "name": "rw",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dusun_id": {
+          "name": "dusun_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "penduduk_id": {
+          "name": "penduduk_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "upadted_at": {
+          "name": "upadted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "kartu_keluarga_penduduk_id_penduduk_id_fk": {
+          "name": "kartu_keluarga_penduduk_id_penduduk_id_fk",
+          "tableFrom": "kartu_keluarga",
+          "tableTo": "penduduk",
+          "columnsFrom": [
+            "penduduk_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "kartu_keluarga_nomor_kk_unique": {
+          "name": "kartu_keluarga_nomor_kk_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "nomor_kk"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.agama": {
+      "name": "agama",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "agama_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "nama": {
+          "name": "nama",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.penduduk": {
+      "name": "penduduk",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "penduduk_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "parent_id": {
+          "name": "parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "nama": {
+          "name": "nama",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nik": {
+          "name": "nik",
+          "type": "varchar(16)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tempat_lahir": {
+          "name": "tempat_lahir",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tanggal_lahir": {
+          "name": "tanggal_lahir",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "jenis_kelamin": {
+          "name": "jenis_kelamin",
+          "type": "jenis_kelamin",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "golongan_darah": {
+          "name": "golongan_darah",
+          "type": "golongan_darah",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pekerjaan": {
+          "name": "pekerjaan",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "agama_id": {
+          "name": "agama_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role_id": {
+          "name": "role_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status_kawin": {
+          "name": "status_kawin",
+          "type": "status_kawin",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pendidikan": {
+          "name": "pendidikan",
+          "type": "pendidikan",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kewarganegaraan": {
+          "name": "kewarganegaraan",
+          "type": "kewarganegaraan",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "penduduk_parent_id_penduduk_id_fk": {
+          "name": "penduduk_parent_id_penduduk_id_fk",
+          "tableFrom": "penduduk",
+          "tableTo": "penduduk",
+          "columnsFrom": [
+            "parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "penduduk_role_id_role_id_fk": {
+          "name": "penduduk_role_id_role_id_fk",
+          "tableFrom": "penduduk",
+          "tableTo": "role",
+          "columnsFrom": [
+            "role_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "penduduk_nik_unique": {
+          "name": "penduduk_nik_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "nik"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.role": {
+      "name": "role",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "role_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "nama": {
+          "name": "nama",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.golongan_darah": {
+      "name": "golongan_darah",
+      "schema": "public",
+      "values": [
+        "A",
+        "B",
+        "AB",
+        "O"
+      ]
+    },
+    "public.jenis_kelamin": {
+      "name": "jenis_kelamin",
+      "schema": "public",
+      "values": [
+        "L",
+        "P"
+      ]
+    },
+    "public.kewarganegaraan": {
+      "name": "kewarganegaraan",
+      "schema": "public",
+      "values": [
+        "WNI",
+        "WNA"
+      ]
+    },
+    "public.pendidikan": {
+      "name": "pendidikan",
+      "schema": "public",
+      "values": [
+        "SD/SEDERAJAT",
+        "SLTP/SEDERAJAT",
+        "SLTA/SEDERAJAT",
+        "DIPLOMA 1",
+        "DIPLOMA 2",
+        "STRATA 1",
+        "STRATA 2"
+      ]
+    },
+    "public.status_kawin": {
+      "name": "status_kawin",
+      "schema": "public",
+      "values": [
+        "KAWIN",
+        "CERAI",
+        "KAWIN TERCATAT",
+        "CERAI MATI"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

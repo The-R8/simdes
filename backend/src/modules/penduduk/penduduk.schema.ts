@@ -50,7 +50,7 @@ export const agama = pgTable("agama", {
 
 export const role = pgTable("role", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  name: varchar({ length: 100 }).notNull(),
+  nama: varchar({ length: 100 }).notNull(),
 });
 
 export const penduduk = pgTable("penduduk", {
@@ -97,17 +97,25 @@ export const insertPendudukSchema = createInsertSchema(penduduk);
 export const updatePendudukSchema = createUpdateSchema(penduduk);
 export const selectPendudukSchema = createSelectSchema(penduduk);
 
+// type helper
+export type InsertPenduduk = typeof penduduk.$inferInsert;
+export type UpdatePenduduk = Partial<InsertPenduduk>;
+export type SelectPenduduk = typeof penduduk.$inferSelect;
+
 // AGAMA
 export const insertAgamaSchema = createInsertSchema(agama);
 export const updateAgamaSchema = createUpdateSchema(agama);
 export const selectAgamaSchema = createSelectSchema(agama);
+
+export type InsertAgama = typeof agama.$inferInsert;
+export type UpdateAgama = Partial<InsertAgama>;
+export type SelectAgama = typeof agama.$inferSelect;
 
 // ROLE
 export const insertRoleSchema = createInsertSchema(role);
 export const updateRoleSchema = createUpdateSchema(role);
 export const selectRoleSchema = createSelectSchema(role);
 
-// type helper
-export type InsertPenduduk = typeof penduduk.$inferInsert;
-export type UpdatePenduduk = Partial<InsertPenduduk>;
-export type SelectPenduduk = typeof penduduk.$inferSelect;
+export type InsertRole = typeof role.$inferInsert;
+export type UpdateRole = Partial<InsertRole>;
+export type SelectRole = typeof role.$inferSelect;
